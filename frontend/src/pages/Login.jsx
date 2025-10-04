@@ -20,7 +20,7 @@ const Login = () => {
 
     const loginHandler = async () => {
         try {
-            const res = await axios.post(`${SERVER_URL}/api/v1/auth/signup`, {
+            const res = await axios.post(`${SERVER_URL}/api/v1/auth/login`, {
                 email, password
             }, {withCredentials: true});
             console.log(res);
@@ -55,6 +55,10 @@ const Login = () => {
                         }} onChange={(e) => setPassword(e.target.value)} value={password} />
                         <button onClick={() => setShowPassword(prev => !prev)} className='absolute right-3 top-2.5 text-gray-500 cursor-pointer'>{!showPassword ? <FaRegEye /> : <FaRegEyeSlash />}</button>
                     </div>
+                </div>
+
+                <div onClick={() => navigate("/forgot-password")} className='text-right text-sm text-[#ff4d2d] font-medium mb-6 cursor-pointer'>
+                    Forgot Password
                 </div>
 
                 <button className='w-full bg-[#ff4d2d] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#e04a2c] transition-colors cursor-pointer' onClick={loginHandler} >
